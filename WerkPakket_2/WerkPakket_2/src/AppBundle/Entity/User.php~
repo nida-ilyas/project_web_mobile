@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: Wasla
+ * Date: 10/25/2016
+ * Time: 1:16 PM
+ */
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+
+
+
+/**
+ * @ORM\Table("gebruiker")
+ * @ORM\Entity
+ */
+
+class User extends BaseUser
+{
+    /**
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(name="userNaam", type="string", length=255)
+     */
+    private $userNaam;
+
+    /**
+     * @ORM\Column(name="paswoord", type="string", length=255)
+     */
+    private $paswoord;
+
+    /**
+     * @ORM\Column(name="rolesString", type="string", length=255)
+     */
+    private $rolesString;
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+
+    //overblijvende getters /setters
+     public function __toString()
+    {
+        return "Entity User, gebruikernaam= " . $this->userNaam;
+    }
+
+
+
+
+
+
+}
