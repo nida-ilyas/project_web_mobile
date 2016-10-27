@@ -23,9 +23,13 @@ class CoachController extends Controller
      */
     public function homeAction()
     {
+        /*
         return $this->render('AppBundle:Coach:home.html.twig', array(
             // ...
         ));
+        */
+        $this->forward('app.coach_controllerService: indexAction');
+
     }
 
 
