@@ -24,11 +24,12 @@ class KlantService
      * @param $klantRepository
      * @param $klantForm
      */
-    public function __construct($entityManager, $klantRepository, $klantForm)
+    public function __construct(EntityManager $entityManager,
+                                KlantRepository $klantRepository)
     {
         $this->entityManager = $entityManager;
         $this->klantRepository = $klantRepository;
-        $this->klantForm = $klantForm;
+
     }
 
     public function fetchAllKlanten(){

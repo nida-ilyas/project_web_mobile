@@ -3,6 +3,33 @@
 {% block title %}AppBundle:Coach:detailKlant{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Coach:detailKlant page</h1>
-    <pre>{{ klanten }}</pre>
+    <div class="container">
+    <form class="form">
+
+        <div class="form-group">
+            <label for="naam">Naam: </label>
+            <input type="text" class="form-control" id="naam" value={{ klantdetails.naam }}>
+        </div>
+
+        <div class="form-group">
+            <label for="naam">Habit1: </label>
+            <input type="text" class="form-control" id="habit1" value={{ klantdetails.habit1 }}>
+        </div>
+
+        <div class="form-group">
+            <label for="naam">Habit2: </label>
+            <input type="text" class="form-control" id="habit2" value={{ klantdetails.habit2 }}>
+        </div>
+
+        <div class="form-group">
+            <label for="naam">Habit3: </label>
+            <input type="text" class="form-control" id="habit3" value={{ klantdetails.habit3 }}>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="reset" class="btn btn-default">Undo</button>
+        <button type="delete" class="btn btn-danger">Verwijderen</button>
+    </form>
+
+</div>
 {% endblock %}

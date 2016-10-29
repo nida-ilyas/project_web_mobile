@@ -7,5 +7,10 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
-#app.coach_controllerService:
-#class: AppBundle\Service\CoachService
+     app.klant_service:
+         class: 'AppBundle\Service\KlantService'
+         arguments: [ "@doctrine.orm.entity_manager", "@app.klant_repository"]
+     app.klant_repository:
+         class: Doctrine\ORM\EntityRepository
+         factory: ["@doctrine.orm.entity_manager", "getRepository"]
+         arguments: ['AppBundle\Entity\Klant']

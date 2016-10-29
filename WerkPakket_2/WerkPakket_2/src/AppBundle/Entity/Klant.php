@@ -203,4 +203,14 @@ class Klant
     {
         return $this->klantReport;
     }
+
+    function __toString()
+    {
+        return $this->id." ".$this->naam." ".
+        $this->habit1." ".
+        $this->habit2." ".
+        $this->habit3;
+    }
+
+
 }

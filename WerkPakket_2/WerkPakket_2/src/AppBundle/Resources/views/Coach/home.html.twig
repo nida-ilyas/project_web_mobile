@@ -6,7 +6,7 @@
 {% endblock %}
 {% block body %}
     <!-- <h1>Welcome to the Coach:Home page</h1> -->
-<div class="center-block col-md-8">
+<div class="container">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -25,5 +25,39 @@
                 </div>
             </div>
         </nav>
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Naam</th>
+            <th>Habit 1</th>
+            <th>Habit 2</th>
+            <th>Habit 3</th>
+            <th>More</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if klanten  %}
+            {% for n in klanten %}
+                <tr>
+                    <td>{{ n.id }}</td>
+                    <td>{{ n.naam }}</td>
+                    <td>{{ n.habit1 }}</td>
+                    <td>{{ n.habit2 }}</td>
+                    <td>{{ n.habit3 }}</td>
+                    <td style="text-align: center; vertical-align: middle;">
+                        <a class="btn btn-default btn-xs"  href="{{ path('detailKlant', { 'klantid': n.id }) }}" >Details</a>
+                        <a class="btn btn-default btn-xs" href="{{ path('detailKlant', { 'klantid': n.id }) }}">Edit</a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+        {% else %}klanten table is leeg
+        {% endif %}
+        </tbody>
+    </table>
+
 </div>
 {% endblock %}
