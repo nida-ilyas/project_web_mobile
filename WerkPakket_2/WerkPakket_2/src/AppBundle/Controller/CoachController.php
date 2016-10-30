@@ -128,6 +128,9 @@ class CoachController extends Controller
         ));
     }
 
+    /**
+     * @Route("/klant/verwijderen/{klantid}", name="deleteKlant")
+     */
 
 
 
