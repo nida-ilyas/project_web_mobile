@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Klant
  *
@@ -25,6 +25,7 @@ class Klant
      *
      *
      * @ORM\Column(name="naam", type="string", length=255, nullable=false)
+     *  @Assert\NotBlank()
      */
     private $naam;
 
@@ -32,6 +33,7 @@ class Klant
      *
      *
      * @ORM\Column(name="habit_1", type="string", length=255, nullable=false)
+     *  @Assert\NotBlank()
      */
     private $habit1;
 
@@ -39,6 +41,7 @@ class Klant
      *
      *
      * @ORM\Column(name="habit_2", type="string", length=255, nullable=false)
+     *  @Assert\NotBlank()
      */
     private $habit2;
 
@@ -46,6 +49,7 @@ class Klant
      *
      *
      * @ORM\Column(name="habit_3", type="string", length=255, nullable=false)
+     *  @Assert\NotBlank()
      */
     private $habit3;
 
@@ -203,14 +207,44 @@ class Klant
     {
         return $this->klantReport;
     }
+    // user
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="klanten")
+     *
+     */
+    protected $user; // $klant
 
-    function __toString()
+
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     * @return Klant
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
-        return $this->id." ".$this->naam." ".
-        $this->habit1." ".
-        $this->habit2." ".
-        $this->habit3;
+        $this->user = $user;
+
+        return $this;
     }
 
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+    public function __tostring()
+    {
+        return (string)$this->getNaam(). " ".
+        $this->getHabit1().
+        " ". $this->getHabit2().
+        " ". $this->getHabit3();
+
+    }
 
 }

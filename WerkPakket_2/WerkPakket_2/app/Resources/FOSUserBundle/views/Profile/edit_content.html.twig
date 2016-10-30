@@ -1,0 +1,30 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container">
+
+
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' , 'class': 'form-signin'} }) }}
+
+    {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'form.username'|trans } }) }}
+    {{ form_errors(form.username) }}
+
+    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'form.email'|trans } }) }}
+    {{ form_errors(form.email) }}
+
+    {{ form_widget(form.current_password, {'attr': {'class': 'form-control', 'placeholder': 'form.current_password'|trans } }) }}
+    {{ form_errors(form.current_password) }}
+
+
+
+    <div>
+        <input type="submit"  class="btn btn-lg btn-primary btn-block" value="{{ 'profile.edit.submit'|trans }}" />
+
+    </div>
+{{ form_end(form) }}
+</div>
+<p>
+    <a href="http://127.0.0.1:8000/profile"  class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-step-backward"></span> Terug
+    </a>
+</p>
+

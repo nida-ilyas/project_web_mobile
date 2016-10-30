@@ -1,0 +1,24 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+    <h4>Gebruiker Profile </h4>
+    </div>
+    <div class="fos_user_user_show" >
+
+        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    </div>
+
+
+<p>
+    <a href="{{ path('fos_user_profile_edit') }}"  class="btn btn-info btn">
+        <span class="glyphicon glyphicon-forward"></span> Profile Bewerken
+    </a>
+</p>
+
+<p>
+    <a href="'http://127.0.0.1:8000/profile/change-password'"  class="btn btn-info btn">
+        <span class="glyphicon glyphicon-forward"></span> paswoord Updaten
+    </a>
+
+</p>
