@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="384755c3-d2e5-405f-ad87-71b94cf27f36" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Coach/geef_habit_voor_klant.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Coach/klant_habit_detail.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Coach/overzicht_klanten.html.twig" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/CoachController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/CoachController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Coach/detail_klant.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Coach/detail_klant.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Coach/home.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Coach/home.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Coach/nieuw_klant.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Coach/nieuw_klant.html.twig" />
-    </list>
+    <list default="true" id="384755c3-d2e5-405f-ad87-71b94cf27f36" name="Default" comment="" />
     <ignored path="Web_Project.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -480,16 +471,16 @@
       <workItem from="1477758447968" duration="477000" />
       <workItem from="1477759127286" duration="1079000" />
       <workItem from="1477769296667" duration="14981000" />
-      <workItem from="1477828678765" duration="15986000" />
+      <workItem from="1477828678765" duration="16435000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71339000" />
+    <option name="totallyTimeSpent" value="71788000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
