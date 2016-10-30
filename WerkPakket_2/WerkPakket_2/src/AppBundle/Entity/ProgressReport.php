@@ -67,7 +67,8 @@ class ProgressReport
     private $klant;
 
 
-
+private $voltooid= "Habit uitgevoerd";
+private $nietVoltooid= "Habit niet uitgevoerd";
 
     /**
      * Get id
@@ -100,7 +101,8 @@ class ProgressReport
      */
     public function getDate()
     {
-        return $this->date;
+        return $this-> date->format('d-m-Y');
+        //return $this->date;
     }
 
     /**
@@ -124,7 +126,11 @@ class ProgressReport
      */
     public function getProgresshabit1()
     {
-        return $this->progresshabit1;
+        //return $this->progresshabit1;
+        if ($this->progresshabit1 == 0){
+            return $this->nietVoltooid;
+        }else{return $this->voltooid;}
+
     }
 
     /**
@@ -148,7 +154,10 @@ class ProgressReport
      */
     public function getProgresshabit2()
     {
-        return $this->progresshabit2;
+        //return $this->progresshabit2;
+        if ($this->progresshabit2 == 0){
+            return $this->nietVoltooid;
+        }else{return $this->voltooid;}
     }
 
     /**
@@ -172,7 +181,11 @@ class ProgressReport
      */
     public function getProgresshabit3()
     {
-        return $this->progresshabit3;
+        //return $this->progresshabit3;
+        if ($this->progresshabit3 == 0){
+            return $this->nietVoltooid;
+        }else{return $this->voltooid;}
+
     }
 
     /**
@@ -246,4 +259,18 @@ class ProgressReport
     {
         return $this->klant;
     }
+
+
+
+    function __toString()
+    {
+        return $this->date->format('d-m-Y'). " ".
+        $this->getProgresshabit1()." ".
+       $this->getProgresshabit2()." ".
+       $this->getProgresshabit3()." ".
+       $this->getWeight()." ".
+       $this->getCalories();
+    }
+
+
 }

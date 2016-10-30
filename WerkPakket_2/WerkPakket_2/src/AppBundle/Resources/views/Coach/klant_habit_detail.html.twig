@@ -4,4 +4,49 @@
 
 {% block body %}
 <h1>Welcome to the Coach:klantHabitDetail page</h1>
+<div class="container">
+<div>
+    <div class="glyphicon glyphicon-chevron-left"></div>
+    <button class="btn-default">Terug</button>
+</div>
+
+    {% if progReport  %}
+        <ul>
+            {% for n in progReport %}
+                <li>{{ n|e }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}progReport is leeg
+    {% endif %}
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Habit 1</th>
+            <th>Habit 2</th>
+            <th>Habit 3</th>
+            <th>Gewicht</th>
+            <th>Totaal ingenome calorieën</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if progReport  %}
+            {% for p in progReport %}
+                <tr>
+                    <td>{{ p.date }}</td>
+                    <td>{{ p.progresshabit1 }}</td>
+                    <td>{{ p.progresshabit2 }}</td>
+                    <td>{{ p.progresshabit3 }}</td>
+                    <td>{{ p.weight }}</td>
+                    <td>{{ p.calories }}</td>
+
+                </tr>
+            {% endfor %}
+        {% else %}klanten table is leeg
+        {% endif %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

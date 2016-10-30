@@ -1,9 +1,18 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Coach:detailKlant{% endblock %}
+{% block title %}Klant detail{% endblock %}
+{% block head %}
+
+    <link rel="stylesheet"
+                        href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+{% endblock %}
 
 {% block body %}
     <div class="container">
+
+        <a class="btn btn-default"  href="{{ path('home') }}" >
+            <div class="glyphicon glyphicon-chevron-left"></div>Terug</a>
+
     <form class="form">
 
         <div class="form-group">
@@ -31,5 +40,36 @@
         <button type="delete" class="btn btn-danger">Verwijderen</button>
     </form>
 
-</div>
+
+        <h2>Daliy report</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Datum</th>
+                <th>{{ klantdetails.habit1 }}</th>
+                <th>{{ klantdetails.habit2 }}</th>
+                <th>{{ klantdetails.habit3 }}</th>
+                <th>Gewicht</th>
+                <th>Totaal ingenome calorieën</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if progReport  %}
+                {% for p in progReport %}
+                    <tr>
+                        <td>{{ p.date }}</td>
+                        <td>{{ p.progresshabit1 }}</td>
+                        <td>{{ p.progresshabit2 }}</td>
+                        <td>{{ p.progresshabit3 }}</td>
+                        <td>{{ p.weight }}</td>
+                        <td>{{ p.calories }}</td>
+
+                    </tr>
+                {% endfor %}
+            {% else %}Nog geen habit ingave uitgevoerd.
+            {% endif %}
+            </tbody>
+        </table>
+
+    </div>
 {% endblock %}

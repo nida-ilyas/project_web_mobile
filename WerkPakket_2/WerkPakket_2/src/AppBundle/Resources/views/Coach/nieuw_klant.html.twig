@@ -1,0 +1,44 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Klant detail{% endblock %}
+{% block head %}
+
+    <link rel="stylesheet"
+                        href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <a class="btn btn-default"  href="{{ path('home') }}" >
+            <div class="glyphicon glyphicon-chevron-left"></div>Terug</a>
+
+    <form class="form" method="post">
+
+        <div class="form-group">
+            <label for="naam">Naam: </label>
+            <input type="text" class="form-control" id="naam" name="naam" placeholder="naam">
+        </div>
+
+        <div class="form-group">
+            <label for="naam">Habit1: </label>
+            <input type="text" class="form-control" id="habit1" name="habit1" placeholder="Habit 1">
+        </div>
+
+        <div class="form-group">
+            <label for="naam">Habit2: </label>
+            <input type="text" class="form-control" id="habit2" name="habit2" placeholder="Habit 1">
+        </div>
+
+        <div class="form-group">
+            <label for="naam">Habit3: </label>
+            <input type="text" class="form-control" id="habit3" name="habit3" placeholder="Habit 1">
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="reset" class="btn btn-default">Clear</button>
+
+    </form>
+
+    </div>
+{% endblock %}

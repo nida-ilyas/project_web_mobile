@@ -7,25 +7,19 @@
 {% block body %}
     <!-- <h1>Welcome to the Coach:Home page</h1> -->
 <div class="container">
+
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Home</a>
-                </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Overzicht klanten <span class="sr-only">(current)</span></a></li>
-                    </ul>
-                </div>
+                <a class="navbar-brand" href="#">Coach Pannel</a>
             </div>
-        </nav>
-
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="{{ path('nieuwKlant') }}">Nieuw klant</a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <table class="table table-striped">
         <thead>
@@ -47,9 +41,9 @@
                     <td>{{ n.habit1 }}</td>
                     <td>{{ n.habit2 }}</td>
                     <td>{{ n.habit3 }}</td>
-                    <td style="text-align: center; vertical-align: middle;">
+                    <td>
                         <a class="btn btn-default btn-xs"  href="{{ path('detailKlant', { 'klantid': n.id }) }}" >Details</a>
-                        <a class="btn btn-default btn-xs" href="{{ path('detailKlant', { 'klantid': n.id }) }}">Edit</a>
+
                     </td>
 
                 </tr>
