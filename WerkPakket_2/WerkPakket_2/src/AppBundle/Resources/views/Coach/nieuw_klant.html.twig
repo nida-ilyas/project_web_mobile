@@ -1,8 +1,7 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Klant detail{% endblock %}
+{% block title %}Nieuw klant{% endblock %}
 {% block head %}
-
     <link rel="stylesheet"
                         href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
 {% endblock %}
@@ -10,35 +9,48 @@
 {% block body %}
     <div class="container">
 
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ path('home') }}">Coach Pannel</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li ><a href="{{ path('home') }}">Home</a></li>
+                    <li class="active" ><a href="{{ path('nieuwKlant') }}">Nieuw klant</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
         <a class="btn btn-default"  href="{{ path('home') }}" >
             <div class="glyphicon glyphicon-chevron-left"></div>Terug</a>
 
-    <form class="form" method="post">
+        <hr/>
 
-        <div class="form-group">
-            <label for="naam">Naam: </label>
-            <input type="text" class="form-control" id="naam" name="naam" placeholder="naam">
+        <div class="form">
+
+
+        {{ form_start(form) }}
+            <div class="form-group">
+                <label for="naam">Naam: </label>
+                {{ form_widget(form.naam) }}
+            </div>
+
+            <div class="form-group">
+                <label for="naam">Habit1: </label>
+                {{ form_widget(form.habit1) }}</div>
+
+            <div class="form-group">
+                <label for="naam">Habit2: </label>
+                {{ form_widget(form.habit2) }}</div>
+
+            <div class="form-group">
+                <label for="naam">Habit3: </label>
+                {{ form_widget(form.habit3) }}</div>
+
+
+            {{ form_end(form) }}
         </div>
-
-        <div class="form-group">
-            <label for="naam">Habit1: </label>
-            <input type="text" class="form-control" id="habit1" name="habit1" placeholder="Habit 1">
-        </div>
-
-        <div class="form-group">
-            <label for="naam">Habit2: </label>
-            <input type="text" class="form-control" id="habit2" name="habit2" placeholder="Habit 1">
-        </div>
-
-        <div class="form-group">
-            <label for="naam">Habit3: </label>
-            <input type="text" class="form-control" id="habit3" name="habit3" placeholder="Habit 1">
-        </div>
-
-        <button type="submit" class="btn btn-success">Submit</button>
-        <button type="reset" class="btn btn-default">Clear</button>
-
-    </form>
 
     </div>
 {% endblock %}

@@ -11,12 +11,12 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Coach Pannel</a>
+                <a class="navbar-brand" href="{{ path('home') }}">Coach Pannel</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="{{ path('home') }}">Home</a></li>
                 <li><a href="{{ path('nieuwKlant') }}">Nieuw klant</a></li>
-                <li><a href="#">Page 3</a></li>
+
             </ul>
         </div>
     </nav>
@@ -24,7 +24,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>ID</th>
+
             <th>Naam</th>
             <th>Habit 1</th>
             <th>Habit 2</th>
@@ -36,7 +36,7 @@
         {% if klanten  %}
             {% for n in klanten %}
                 <tr>
-                    <td>{{ n.id }}</td>
+
                     <td>{{ n.naam }}</td>
                     <td>{{ n.habit1 }}</td>
                     <td>{{ n.habit2 }}</td>
