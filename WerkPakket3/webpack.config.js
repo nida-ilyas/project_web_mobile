@@ -1,13 +1,13 @@
 
+var webpack = require('webpack');
+var path = require("path");
+module.exports = {
+    entry: ['./main.js']
+    ,
 
-
-module.exports = 
-{
-    devtool: 'inline-source-map',
-    entry:
-        './main.js',
-/*
-    output: { path: __dirname, filename: 'bundle.js' },
+    output: {
+        publicPath: 'http://localhost:8008/',
+        filename: "bundle.js"},
     module: {
         loaders: [
             {
@@ -18,7 +18,4 @@ module.exports =
             }
         ]
     },
-
-*/
-
 };
