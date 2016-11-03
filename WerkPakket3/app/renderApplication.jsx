@@ -29,7 +29,7 @@ class App extends React.Component{
 }
 const renderApplication = ()->{
     render (<MuiThemeProvider>
-        <App/>
+            <App/>
         </MuiThemeProvider>,
         document.getElementById('applicatie')
     );
