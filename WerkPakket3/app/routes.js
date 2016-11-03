@@ -17,5 +17,6 @@ export default (store) => {
         { /* Catch all route */ }
         <Route path="*" component={NotFound} status={404} />
         </Route>
+
     );
 };

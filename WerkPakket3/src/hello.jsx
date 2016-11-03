@@ -4,7 +4,7 @@ var Hello = React.createClass(
     {
         render: function () {
             return (<div>
-            Hello  React
+            Hello  no React
             </div>);
 
         }

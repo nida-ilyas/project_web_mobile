@@ -34,3 +34,4 @@ const renderApplication = ()->{
         document.getElementById('applicatie')
     );
 }
+export default renderApplication;
