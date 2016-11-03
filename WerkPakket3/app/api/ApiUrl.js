@@ -1,2 +1,2 @@
-const ApiUrl = 'http://react-api.pakket3.net';
+const ApiUrl = 'http://react-api.azurewebsites.net';
 export default ApiUrl;

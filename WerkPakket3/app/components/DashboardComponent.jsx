@@ -1,7 +1,7 @@
 import React from 'react';
 import GetDashboard from '../api/DashboardApi';
 import Store from '../store';
-import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
+//import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card/theme.scss';
 
 export default class DashboardComponent extends  React.Component{
     componentWillMount(){
@@ -17,21 +17,7 @@ export default class DashboardComponent extends  React.Component{
 
     render(){
         return(
-            <Card>
-                <CardTitle
-                    title="Dashboard"
-                    subtitle={this.state.dashboard}
-                    actAsExpander={true}
-                    showExpandableButton={true}
-                />
-                <CardText expendable={true}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                    Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                    Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-
-                </CardText>
-            </Card>
+<p>Heloo you there</p>
         )
     }
 }

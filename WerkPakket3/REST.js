@@ -15,7 +15,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
     });
    router.get("/allklanten",function(req,res){
         var query = "SELECT * FROM ??";
-        var table = ["klanten"];
+        var table = ["klanten"]
         query = mysql.format(query,table);
         connection.query(query,function(err,rows){
             if(err) {
