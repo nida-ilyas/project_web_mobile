@@ -15,6 +15,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection) {
       //  var table = ["id",req.params.klant_id];
         query = mysql.format(query); //,table
         connection.query(query,function(err,rows){
+            //connection.release(); // extra
             if(err) {
                 throw err;
                 res.json({"Error" : true, "Message" : "Error executing MySQL query"});
@@ -22,6 +23,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection) {
                 for(var i in rows)
                 {
                     res.json({"Error" : false, "Message" : "Success", "Habit1" : rows[i]. habit_1, "Habit2": rows[i].habit_2, "Habit3":  rows[i].habit_3 , "Weight": rows[i].weight, "Calories": rows[i].calories});
+                    return; 
                 }
 
             }

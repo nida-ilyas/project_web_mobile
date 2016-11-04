@@ -23,6 +23,7 @@ REST_ROUTERHABITS.prototype.handleRoutes= function(router,connection) {
                 for(var i in rows)
                 {
                     res.json({"Error" : false, "Message" : "Success", "Habit1" : rows[i]. habit_1, "Habit2": rows[i].habit_2, "Habit3":  rows[i].habit_3});
+                    return;
                 }
 
             }

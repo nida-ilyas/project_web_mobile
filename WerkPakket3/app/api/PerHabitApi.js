@@ -27,7 +27,7 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
 
                         res.json({"Error": false, "Message": "Success", "Habit1": rows[i].habit_1, "ProgressHabit1 Status": rows[i].progressHabit1});
 
-                   // return ;
+                   return ;
                 }
 
 
@@ -73,7 +73,7 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
 
                     res.json({"Error": false, "Message": "Success", "Habit1": rows[i].habit_2,  "ProgressHabit2 Status: ": rows[i].progressHabit2});
 
-                    // return ;
+                    return ;
                 }
 
 
@@ -94,7 +94,7 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
 
                     res.json({"Error": false, "Message": "Success","Habit1": rows[i].habit_3,  "ProgressHabit3: ": rows[i].progressHabit3});
 
-                    // return ;
+                     return ;
                 }
 
 
