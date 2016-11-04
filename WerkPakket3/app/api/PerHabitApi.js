@@ -1,9 +1,6 @@
 /**
  * Created by Wasla on 11/1/2016.
  */
-/**
- * Created by Wasla on 11/1/2016.
- */
 //import ApiUrl from './ApiUrl';
 var mysql = require("mysql");
 
@@ -17,7 +14,8 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
 
     router.get("/klant/:klant_id/progresshabit1",function(req,res){ //
 
-        var query = 'SELECT * FROM progressreport WHERE klant_id= \''+ req.params.klant_id + '\'';
+      //  var query = 'SELECT progressHabit1 , date  FROM progressreport WHERE klant_id= \''+ req.params.klant_id + '\' AND ';
+        var query = 'SELECT  k.habit_1 , k.habit_2 , k.habit_3 ,p.date, p.progressHabit1 FROM klanten k INNER JOIN progressreport p   ON (k.id = p.klant_id)  WHERE p.klant_id= \''+ req.params.klant_id + '\'' ;
         query = mysql.format(query);// ,table
         connection.query(query,function(err,rows){
             if(err) {
@@ -27,7 +25,7 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
                 {
 
 
-                        res.json({"Error": false, "Message": "Success", "ProgressHabit1: ": rows[i].progressHabit1});
+                        res.json({"Error": false, "Message": "Success", "Habit1": rows[i].habit_1, "ProgressHabit1 Status": rows[i].progressHabit1});
 
                    // return ;
                 }
@@ -63,7 +61,8 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
     });
     router.get("/klant/:klant_id/progresshabit2",function(req,res){ //
 
-        var query = 'SELECT * FROM progressreport WHERE klant_id= \''+ req.params.klant_id + '\'';
+      //  var query = 'SELECT * FROM progressreport WHERE klant_id= \''+ req.params.klant_id + '\'';
+        var query = 'SELECT  k.habit_1 , k.habit_2 , k.habit_3 ,p.date, p.progressHabit2 FROM klanten k INNER JOIN progressreport p   ON (k.id = p.klant_id)  WHERE p.klant_id= \''+ req.params.klant_id + '\'' ;
         query = mysql.format(query);// ,table
         connection.query(query,function(err,rows){
             if(err) {
@@ -72,7 +71,7 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
                 for(var i in rows)
                 {
 
-                    res.json({"Error": false, "Message": "Success", "ProgressHabit1: ": rows[i].progressHabit2});
+                    res.json({"Error": false, "Message": "Success", "Habit1": rows[i].habit_2,  "ProgressHabit2 Status: ": rows[i].progressHabit2});
 
                     // return ;
                 }
@@ -83,7 +82,8 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
     });
     router.get("/klant/:klant_id/progresshabit3",function(req,res){ //
 
-        var query = 'SELECT * FROM progressreport WHERE klant_id= \''+ req.params.klant_id + '\'';
+        //var query = 'SELECT * FROM progressreport WHERE klant_id= \''+ req.params.klant_id + '\'';
+        var query = 'SELECT  k.habit_1 , k.habit_2 , k.habit_3 ,p.date, p.progressHabit3 FROM klanten k INNER JOIN progressreport p   ON (k.id = p.klant_id)  WHERE p.klant_id= \''+ req.params.klant_id + '\'' ;
         query = mysql.format(query);// ,table
         connection.query(query,function(err,rows){
             if(err) {
@@ -92,7 +92,7 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
                 for(var i in rows)
                 {
 
-                    res.json({"Error": false, "Message": "Success", "ProgressHabit1: ": rows[i].progressHabit3});
+                    res.json({"Error": false, "Message": "Success","Habit1": rows[i].habit_3,  "ProgressHabit3: ": rows[i].progressHabit3});
 
                     // return ;
                 }

@@ -14,7 +14,7 @@ REST_ROUTERWEIGHT.prototype.handleRoutes= function(router,connection) {
 
     router.put("/klant/:klant_id/weight",function(req,res){
         var query = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
-        var table = ["progressreport","weight",req.body.weight,"klant_id" ,req.params.klant_id];
+        var table = ["progressreport","weight",req.body.weight,"klant_id", "date",Date.now() ,req.params.klant_id];
         query = mysql.format(query,table);
         connection.query(query,function(err,rows){
             if(err) {
