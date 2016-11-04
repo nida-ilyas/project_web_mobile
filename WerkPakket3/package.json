@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack-server": " webpack --config webpack.config.js",
+    "server": "node app/api/server.js",
     "web-server": "http-server -p 8008 .",
-    "start": "npm run webpack-server & npm run web-server"
+    "start": "npm run webpack-server & npm run web-server & npm run server"
   },
   "keywords": [],
   "author": "",

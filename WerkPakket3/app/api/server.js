@@ -2,7 +2,7 @@ var express = require("express");
 var mysql   = require("mysql");
 var bodyParser  = require("body-parser");
 var md5 = require('MD5');
-var rest = require("./REST.js");
+//var rest = require("./REST.js");
 var dashboardRest = require("./DashboardApi.js");
 var habits3Rest = require("./HabitsAll_3Api.js");
 var weightRest = require("./WeightApi.js");
@@ -11,12 +11,14 @@ var perhabitRest = require("./PerHabitApi.js");
 
 var app  = express();
 
+/*
 function DashboardRest()
 {
     var self = this;
     self.connectMysql();
 
 };
+*/
 function REST(){
     var self = this;
     self.connectMysql();

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Hello from './src/hello.jsx';
-import Dashboard from './app/components/DashboardComponent';
+//import Hello from './src/hello.jsx';
+import Dashboard from './app/components/DashboardComponent.jsx';
 
-ReactDOM.render(<Dashboard />,  document.getElementById('container'));
+render(<Dashboard />,  document.getElementById('container'));
+//render(<Hello />,  document.getElementById('container'));

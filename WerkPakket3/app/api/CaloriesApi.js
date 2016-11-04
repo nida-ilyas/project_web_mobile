@@ -22,6 +22,7 @@ REST_ROUTERCALORIES.prototype.handleRoutes= function(router,connection) {
                 res.json({"Error" : true, "Message" : "Error executing MySQL query"});
             } else {
                 res.json({"Error" : false, "Message" : "updated calories "+req.body.calories});
+                return;
             }
         });
     });
