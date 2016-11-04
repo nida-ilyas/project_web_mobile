@@ -25,6 +25,24 @@ REST_ROUTERWEIGHT.prototype.handleRoutes= function(router,connection) {
             }
         });
     });
+
+    router.get("/klant/:klant_id/weightoverzicht",function(req,res){
+        var query = "SELECT * FROM ?? WHERE ??=?";
+        var table = ["progressreport","klant_id",req.params.klant_id];
+        query = mysql.format(query,table);
+        connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+            } else {
+                for(var i in rows)
+                {
+                    res.json({"Error" : false, "Message" : "Success", "date" : rows[i].date, "weight": rows[i].weight});
+                    return ; 
+                }
+
+            }
+        });
+    });
 }
 module.exports = REST_ROUTERWEIGHT;
 
