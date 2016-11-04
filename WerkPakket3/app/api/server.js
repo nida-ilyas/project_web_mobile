@@ -3,9 +3,20 @@ var mysql   = require("mysql");
 var bodyParser  = require("body-parser");
 var md5 = require('MD5');
 var rest = require("./REST.js");
-//var habitsall = require("../api/HabitsAllApi_3.js");
+var dashboardRest = require("./DashboardApi.js");
+var habits3Rest = require("./HabitsAll_3Api.js");
+var weightRest = require("./WeightApi.js");
+var caloriesRest = require("./CaloriesApi.js");
+var perhabitRest = require("./PerHabitApi.js");
+
 var app  = express();
 
+function DashboardRest()
+{
+    var self = this;
+    self.connectMysql();
+
+};
 function REST(){
     var self = this;
     self.connectMysql();
@@ -36,7 +47,12 @@ REST.prototype.configureExpress = function(connection) {
       app.use(bodyParser.json());
       var router = express.Router();
       app.use('/api', router);
-      var rest_router = new rest(router,connection,md5);
+      //var rest_router = new rest(router,connection,md5);
+    var rest_router = new dashboardRest(router,connection);
+    var rest_routerHabits = new habits3Rest(router,connection);
+    var rest_routerWeight = new weightRest(router,connection);
+    var rest_routerCalories = new caloriesRest(router,connection);
+    var rest_routerPerHabit = new perhabitRest(router,connection);
       self.startServer();
 }
 
