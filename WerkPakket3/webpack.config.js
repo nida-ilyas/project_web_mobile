@@ -1,17 +1,19 @@
 var webpack = require('webpack');
 var path = require("path");
 module.exports = {
-    entry: './main.js'
+    entry: './app/components/DashboardComponent.jsx'
     ,
 
     output: {
         publicPath: 'http://localhost:8008/',
         filename: "bundle.js"},
+
     node: {
         net: 'empty',
         tls: 'empty',
         fs: 'empty'
     },
+   
     module: {
         loaders: [
             {
@@ -19,7 +21,9 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 query: {presets: ['es2015', 'react']}
-            }
+            },
+
+            { test: /\.json$/, loader: "json-loader"}
         ]
     },
     resolve: {
