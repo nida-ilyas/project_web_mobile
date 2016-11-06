@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack-server": " webpack --config webpack.config.js",
     "server": "node server.js",
-    "web-server": "http-server -p 8008 .",
+    "web-server": "http-server -p 8808 .",
     "start": "npm run webpack-server & npm run web-server & npm run server node"
   },
   "keywords": [],

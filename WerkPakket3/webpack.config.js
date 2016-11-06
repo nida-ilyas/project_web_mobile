@@ -1,11 +1,12 @@
 var webpack = require('webpack');
 var path = require("path");
+
 module.exports = {
-    entry: './app/components/Habit3Component.jsx'
+    entry: './app/components/overzichtPerHabitComponent.jsx'
     ,
 
     output: {
-        publicPath: 'http://localhost:8008/',
+        publicPath: 'http://localhost:8808/',
         filename: "bundle.js"},
 
     node: {
@@ -31,6 +32,10 @@ module.exports = {
             '',
             '.js',
             '.jsx'
-        ]
+        ],
+        moduleDirectories: [
+            'node_modules',
+            'componenten'
+        ],
     },
 };
