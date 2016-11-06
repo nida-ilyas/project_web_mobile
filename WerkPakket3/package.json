@@ -8,7 +8,7 @@
     "webpack-server": " webpack --config webpack.config.js",
     "server": "node server.js",
     "web-server": "http-server -p 8008 .",
-    "start": "npm run webpack-server & npm run web-server & npm run server node"
+    "start": "npm-run-parallel webpack-server  web-server server"
   },
   "keywords": [],
   "author": "",
