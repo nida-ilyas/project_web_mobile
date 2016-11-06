@@ -1,115 +1,63 @@
-
 import React from 'react';
-import { render } from 'react-dom';
-//import GetDashboard from '../api/DashboardApi';
-var Dashboard = require("../api/DashboardApi.js");
-import Store from '../store';
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import Request  from 'superagent';
+import _    from 'lodash';
 
-//var server = require("./server.js");
-var data =[
-    {id:1,Habit1:"Geen frietjes eten",Habit2:"Meer water drinken",Habit3:"5Km wandelen"}
-
-
-
-];
-
-var Habit3Component = React.createClass(
+class Habit3Component extends React.Component
+{
+    constructor()
     {
-        render: function()
-        {
-            return (
-                <div>
-                    <h2>Habits </h2>
-                    <ul> <li> {this.props.habit_1}</li>
-                        <li> {this.props.habit_2}</li>
-                        <li> {this.props.habit_3}</li>
-                    </ul>
+        super();
+        this.state = {};
 
-
-
-                    {this.props.children}
-
-
-                </div>
-            );
-        }
 
     }
-);
-
-var Post = React.createClass(
+    componentWillMount()
     {
-        render: function()
+        // called the first time the component is loaded right before the component is added to the page
+        var url = "http://localhost:8081/api/klant/1/habits";
+        Request.get(url).then((response)=>
         {
-            return (
-                <div>
-                    <h1>Dashboard</h1>
-                    <HabitList data={this.props.data}/>
-                </div>
-            );
-        }
+         this.setState( // that wil cause the render method to cause again
+             {
+                 habit1: response.body.Habit1,
+                 habit2: response.body.Habit2,
+                 habit3: response.body.Habit3
+
+
+
+
+             });
+        });
 
     }
-);
-var HabitList= React.createClass(
+
+
+    render()
     {
-
-        render: function()
+        var habit1 = this.state.habit1;
+        var habit2 = this.state.habit2;
+        var habit3 = this.state.habit3;
+        var habits = _.map(this.state.habits,(habit)=>
         {
-            var dashboardDataList = this.props.data.map(function(p)
-            {
-                return (
-                    <Habit3Component habit_1={p.habit_1} habit_2={p.habit_2} habit_3={p.habit_3}> </Habit3Component>
-                );
+            return  <li>{habit.Habit1}</li>;
+        });
 
-            });
-            return (
-                <div key={data.toString()}>
 
-                    {dashboardDataList}
-                </div>
-            );
-        }
+        return  <div>
 
+            <input ref="textBox" type="text"/>
+          <ul>
+              <li>{habit1}</li>
+              <li>{habit2}</li>
+              <li>{habit3}</li>
+
+              </ul>
+
+        </div>
     }
-);
-var KlantData = React.createClass(
-    {
-        getInitialState: function()
-        {
-            return {data:[]};
-        },
-        componentDidMount: function()
-        {
-            $.ajax(
-                {
-                    url: this.props.url,
-                    dataType:'json',
-                    cacha:false,
-                    success: function(data)
-                    {
-                        this.setState({data: data});
 
-                    }.bind(this),
-                    error: function(xhr, status, err)
-                    {
-                        console.error(this.props.url, status, err.toString());
-                    }.bind(this)
-                });
-        },
-        render: function()
-        {
-            return(
-                <div>
-                    <Post data={this.state.data}/>
-                </div>
-            );
-        }
-    }
-);
 
-render(<Post data={data}/> , document.getElementById('container')) ;
 
+}
+export  {Habit3Component as default};
 

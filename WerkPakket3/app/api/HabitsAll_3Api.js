@@ -9,6 +9,10 @@ function REST_ROUTERHABITS(router,connection) {
     var self = this;
     self.handleRoutes(router,connection);
 }
+function GetDHabit3Api(url)
+{
+    url = "api/klant/:klant_id/habits";
+}
 
 REST_ROUTERHABITS.prototype.handleRoutes= function(router,connection) {
 
