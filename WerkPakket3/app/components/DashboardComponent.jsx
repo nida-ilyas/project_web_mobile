@@ -7,7 +7,6 @@ import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
 var data = [
-    fetch(`http://192.168.88.1:8008/api/klant/1/dashboard`)
 ]
 
 var DashboardComponent =  React.createClass (
@@ -58,7 +57,7 @@ var KlantData = React.createClass(
     {
     getInitialState: function()
     {
-    return {date: []};
+    return {data: []};
 },
 componentDidMount: function(){
     $.ajax(
@@ -78,7 +77,7 @@ componentDidMount: function(){
 render: function(){
     return(
         <div>
-            <Post data={this.state.date}/>
+            <Post data={this.state.data}/>
         </div>
     );
 }}

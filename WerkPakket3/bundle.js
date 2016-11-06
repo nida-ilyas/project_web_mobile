@@ -58,7 +58,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//render(<WelcomeComponent />, document.getElementById('container'));
 	(0, _reactDom.render)(_react2.default.createElement(_DashboardComponent_wasla2.default, null), document.getElementById('container'));
 
 /***/ },

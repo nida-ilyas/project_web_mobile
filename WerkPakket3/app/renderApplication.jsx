@@ -31,7 +31,7 @@ const renderApplication = ()->{
     render (<MuiThemeProvider>
             <App/>
         </MuiThemeProvider>,
-        document.getElementById('applicatie')
+        document.getElementById('container')
     );
 }
 export default renderApplication;
