@@ -19,9 +19,10 @@ class Habit3Component extends React.Component
         {
          this.setState( // that wil cause the render method to cause again
              {
-                 habits: response.body.Habit1,
-                 habits: response.body.Habit2,
-                 habits: response.body.Habit3,
+                 habit1: response.body.Habit1,
+                 habit2: response.body.Habit2,
+                 habit3: response.body.Habit3
+
 
 
 
@@ -33,8 +34,10 @@ class Habit3Component extends React.Component
 
     render()
     {
-
-        var klanthabits = _.map(this.state.klanthabits,(habit)=>
+        var habit1 = this.state.habit1;
+        var habit2 = this.state.habit2;
+        var habit3 = this.state.habit3;
+        var habits = _.map(this.state.habits,(habit)=>
         {
             return  <li>{habit.Habit1}</li>;
         });
@@ -43,7 +46,13 @@ class Habit3Component extends React.Component
         return  <div>
 
             <input ref="textBox" type="text"/>
-          <ul>{klanthabits}</ul>
+          <ul>
+              <li>{habit1}</li>
+              <li>{habit2}</li>
+              <li>{habit3}</li>
+
+              </ul>
+
         </div>
     }
 

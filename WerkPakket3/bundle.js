@@ -21457,8 +21457,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -21486,18 +21484,22 @@
 	            // called the first time the component is loaded right before the component is added to the page
 	            var url = "http://localhost:8081/api/klant/1/habits";
 	            _superagent2.default.get(url).then(function (response) {
-	                var _this2$setState;
+	                _this2.setState( // that wil cause the render method to cause again
+	                {
+	                    habit1: response.body.Habit1,
+	                    habit2: response.body.Habit2,
+	                    habit3: response.body.Habit3
 
-	                _this2.setState((_this2$setState = {
-	                    habits: response.body.Habit1
-	                }, _defineProperty(_this2$setState, 'habits', response.body.Habit2), _defineProperty(_this2$setState, 'habits', response.body.Habit3), _this2$setState));
+	                });
 	            });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-
-	            var klanthabits = _lodash2.default.map(this.state.klanthabits, function (habit) {
+	            var habit1 = this.state.habit1;
+	            var habit2 = this.state.habit2;
+	            var habit3 = this.state.habit3;
+	            var habits = _lodash2.default.map(this.state.habits, function (habit) {
 	                return _react2.default.createElement(
 	                    'li',
 	                    null,
@@ -21512,7 +21514,21 @@
 	                _react2.default.createElement(
 	                    'ul',
 	                    null,
-	                    klanthabits
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        habit1
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        habit2
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        habit3
+	                    )
 	                )
 	            );
 	        }
