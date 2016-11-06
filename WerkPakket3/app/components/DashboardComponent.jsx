@@ -7,6 +7,7 @@ import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
 var data = [
+    fetch(`http://localhost:8081/api/klant/1/dashboard`)
 ]
 
 var DashboardComponent =  React.createClass (
