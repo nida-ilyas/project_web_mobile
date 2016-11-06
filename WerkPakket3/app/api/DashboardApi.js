@@ -11,6 +11,7 @@ function REST_ROUTER(router,connection) {
 REST_ROUTER.prototype.handleRoutes= function(router,connection) {
 
     router.get("/klant/:klant_id/dashboard",function(req,res){
+        
         var ids = req.params.klant_id;
         var query = 'SELECT  k.habit_1 , k.habit_2 , k.habit_3 ,p.weight, p.calories FROM klanten k INNER JOIN progressreport p   ON (k.id = p.klant_id)  WHERE k.id= \''+ req.params.klant_id + '\'' ; //progressreport p ON p.klant_id == k.id (, p.weight, p.calories ) habit_1 , habit_2 , habit_3
       //  var table = ["id",req.params.klant_id];

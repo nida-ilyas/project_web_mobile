@@ -1,7 +1,8 @@
 var webpack = require('webpack');
 var path = require("path");
 module.exports = {
-    entry: './app/components/Habit3Component.jsx'
+   /* entry: './app/components/Habit3Component.jsx'*/
+    entry: './main.jsx'
     ,
 
     output: {
@@ -9,6 +10,7 @@ module.exports = {
         filename: "bundle.js"},
 
     node: {
+
         net: 'empty',
         tls: 'empty',
         fs: 'empty'
