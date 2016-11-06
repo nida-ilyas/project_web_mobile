@@ -69,34 +69,15 @@
 
 
 	//var server = require("./server.js");
-	var data = [{ id: 1, naam: "Nida", habit_1: "Geen frietjes eten", habit_2: "Meer water drinken", habit_3: "5Km wandelen", Weight: 60, Calories: 1000 }];
+	var data = [{ id: 1, Habit1: "Geen frietjes eten", Habit2: "Meer water drinken", Habit3: "5Km wandelen" }];
 
-	var DashboardComponent = _react2.default.createClass({
-	    displayName: 'DashboardComponent',
+	var Habit3Component = _react2.default.createClass({
+	    displayName: 'Habit3Component',
 
 	    render: function render() {
 	        return _react2.default.createElement(
 	            'div',
 	            null,
-	            _react2.default.createElement(
-	                'h1',
-	                null,
-	                ' ',
-	                this.props.naam,
-	                ' '
-	            ),
-	            _react2.default.createElement(
-	                'h2',
-	                null,
-	                'Weight'
-	            ),
-	            this.props.Weight,
-	            _react2.default.createElement(
-	                'h2',
-	                null,
-	                'Calories'
-	            ),
-	            this.props.Calories,
 	            _react2.default.createElement(
 	                'h2',
 	                null,
@@ -143,27 +124,27 @@
 	                null,
 	                'Dashboard'
 	            ),
-	            _react2.default.createElement(DashboardList, { data: this.props.data })
+	            _react2.default.createElement(HabitList, { data: this.props.data })
 	        );
 	    }
 
 	});
-	var DashboardList = _react2.default.createClass({
-	    displayName: 'DashboardList',
+	var HabitList = _react2.default.createClass({
+	    displayName: 'HabitList',
 
 
 	    render: function render() {
-	        var dashboardNodes = this.props.data.map(function (p) {
+	        var dashboardDataList = this.props.data.map(function (p) {
 	            return _react2.default.createElement(
-	                DashboardComponent,
-	                { naam: p.naam, Weight: p.Weight, Calories: p.Calories, habit_1: p.habit_1, habit_2: p.habit_2, habit_3: p.habit_3 },
+	                Habit3Component,
+	                { habit_1: p.habit_1, habit_2: p.habit_2, habit_3: p.habit_3 },
 	                ' '
 	            );
 	        });
 	        return _react2.default.createElement(
 	            'div',
 	            { key: data.toString() },
-	            dashboardNodes
+	            dashboardDataList
 	        );
 	    }
 
@@ -197,99 +178,6 @@
 	});
 
 	(0, _reactDom.render)(_react2.default.createElement(Post, { data: data }), document.getElementById('container'));
-	/*
-	 import React from 'react';
-
-	 var Hello = React.createClass(
-	 {
-	 render: function () {
-	 return (<div>
-	 <h1>Dashboard </h1>
-	 </div>);
-
-	 }
-	 });
-	 export default Hello;
-
-	 */
-
-	/*
-	export default class DashboardComponent extends React.Component
-	{
-	    componentWillMount() {
-	        this.state = { dashboard: 'loading' };
-	        ("http://127.0.0.1:8008/klant/1/dashboard").then(jsondata => {
-	            Store.dispatch({ type: 'load_dashboard', data: jsondata });
-	        });
-
-	        Store.subscribe(() => {
-	            this.setState({ dashboard: JSON.stringify(Store.getState().dashboard) });
-	        });
-
-	    }
-
-	    render() {
-	        return (<div>
-	            <h1>Dashboard </h1>
-	        </div>);
-
-	    }
-
-
-
-	}
-
-	*/
-
-	/*
-	loadDashboardFromServer()
-	{
-	    var self= this ;
-	        this.state = { dashboard: 'loading' };
-	    var getdashboard = new Dashboard("klant/1/dashboard","localhost:8008").then(jsondata => {
-	        Store.dispatch({ type: 'load_dashboard', data: jsondata });
-	    });
-	      Store.subscribe(() => {
-	        this.setState({ dashboard: JSON.stringify(Store.getState().dashboard) });
-	    });
-	   
-	  }
-	    componentWillMount() {
-	    this.loadCategoriesFromServer();
-	  }
-	render() {
-	      var self = this;
-	    var dashboard = this.state.dashboard.map(function(dboard)
-	    {
-	        var data = dboard.data();
-	        return <li key="{data.id}>{data.title}{"></li>
-	    });
-	      return (
-
-	    <ul>
-	        {dashboard}
-	     </ul>
-	*/
-	/*
-	<Card>
-	<CardHeader
-	    title="Dashboard"
-	    subtitle={this.state.dashboard}
-	    actAsExpander={true}
-	    showExpandableButton={true}
-	/>
-	<CardText expandable={true}>
-	    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-	    Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-	    Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-	   Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-	</CardText>
-	</Card>  */
-	/*
-	    )
-	}
-	}
-	    */
 
 /***/ },
 /* 1 */

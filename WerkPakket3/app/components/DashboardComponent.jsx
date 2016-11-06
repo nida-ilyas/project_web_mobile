@@ -63,7 +63,7 @@ var DashboardComponent = React.createClass(
 
         render: function()
     {
-        var dashboardNodes = this.props.data.map(function(p)
+        var dashboardDataList = this.props.data.map(function(p)
     {
         return (
         <DashboardComponent naam={p.naam} Weight={p.Weight} Calories={p.Calories} habit_1={p.habit_1} habit_2={p.habit_2} habit_3={p.habit_3}> </DashboardComponent>
@@ -73,7 +73,7 @@ var DashboardComponent = React.createClass(
         return (
         <div key={data.toString()}>
 
-        {dashboardNodes}
+        {dashboardDataList}
         </div>
         );
     }
@@ -134,7 +134,7 @@ var KlantData = React.createClass(
 
 
 /*
-export default class DashboardComponent extends React.Component
+export default class Habit3Component extends React.Component
 {
     componentWillMount() {
         this.state = { dashboard: 'loading' };
