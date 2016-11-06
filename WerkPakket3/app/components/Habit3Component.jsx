@@ -46,6 +46,7 @@ class Habit3Component extends React.Component
         return  <div>
 
             <input ref="textBox" type="text"/>
+            <h2>Habits </h2>
           <ul>
               <li>{habit1}</li>
               <li>{habit2}</li>
