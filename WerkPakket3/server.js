@@ -3,11 +3,11 @@ var mysql   = require("mysql");
 var bodyParser  = require("body-parser");
 var md5 = require('MD5');
 //var rest = require("./REST.js");
-var dashboardRest = require("./DashboardApi.js");
-var habits3Rest = require("./HabitsAll_3Api.js");
-var weightRest = require("./WeightApi.js");
-var caloriesRest = require("./CaloriesApi.js");
-var perhabitRest = require("./PerHabitApi.js");
+var dashboardRest = require("./app/api/DashboardApi.js");
+var habits3Rest = require("./app/api/HabitsAll_3Api.js");
+var weightRest = require("./app/api/WeightApi.js");
+var caloriesRest = require("./app/api/CaloriesApi.js");
+var perhabitRest = require("./app/api/PerHabitApi.js");
 
 
 

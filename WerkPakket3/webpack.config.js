@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require("path");
 module.exports = {
-    entry: './app/components/DashboardComponent.jsx'
+    entry: './app/components/Habit3Component.jsx'
     ,
 
     output: {
