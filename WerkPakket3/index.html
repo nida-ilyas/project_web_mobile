@@ -82,17 +82,18 @@
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#"> <div class="glyphicon glyphicon-user"> </div> Dashboard</a>
+  <a onclick="openDashboard()"> <div class="glyphicon glyphicon-user"> </div> Dashboard</a>
+  <a href="#"><div class="glyphicon glyphicon-tasks"> </div> Log habits progress</a>
   <a href="#"><div class="glyphicon glyphicon-scale"> </div> Weight</a>
   <a href="#"><div class="glyphicon glyphicon-apple"> </div> Calories</a>
-  <a href="#"><div class="glyphicon glyphicon-tasks"> </div> Habits</a>
+  <a href="#"><div class="glyphicon glyphicon-floppy-disk"> </div> Progress report</a>
 </div>
 
 <!-- Use any element to open the sidenav -->
 <div onclick="openNav()" id="upper-bar"><div class="glyphicon glyphicon-menu-hamburger"></div> Habits Dashboard</div>
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 <div id="main">
-  <!-- <h3>Werkpakket 3</h3> -->
+  ok
   <div id="container">
   </div>
 </div>
@@ -103,6 +104,10 @@
 
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+  }
+  function openDashboard() {
+    import Dashboard from './app/components/DashboardComponent.jsx';
+    render(<Dashboard />, document.getElementById('container'));
   }
 </script>
 

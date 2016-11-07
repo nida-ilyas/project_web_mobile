@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import Request from 'superagent';
 import _    from 'lodash';
+import Table from 'react-bootstrap/lib/Table';
 
 class IngaveOverzichtComponent extends React.Component{
     constructor(){
@@ -18,9 +19,9 @@ class IngaveOverzichtComponent extends React.Component{
                     habit1: response.body.Habit1,
                     habit2: response.body.Habit2,
                     habit3: response.body.Habit3,
-                    progressHabit1: response.ProgressHabit1,
-                    progressHabit2: response.ProgressHabit2,
-                    progressHabit3: response.ProgressHabit3,
+                    progressHabit1: response.body.ProgressHabit1,
+                    progressHabit2: response.body.ProgressHabit2,
+                    progressHabit3: response.body.ProgressHabit3,
                     weight: response.body.Weight,
                     calories: response.body.Calories
                 }
@@ -45,20 +46,9 @@ class IngaveOverzichtComponent extends React.Component{
 
 
         return  <div>
-            <h2>{date}</h2>
-            <ul>
-                <li>{date}</li>
-                <li>{habit1}</li>
-                <li>{habit2}</li>
-                <li>{habit3}</li>
-                <li>{progressHabit1}</li>
-                <li>{progressHabit2}</li>
-                <li>{progressHabit3}</li>
-                <li>{weight}</li>
-                <li>{calories}</li>
-            </ul>
+            <h2>Progress Report</h2>
 
-            <table class="table table-striped">
+            <Table>
                 <thead>
                 <tr>
                     <th>Date</th>
@@ -79,10 +69,8 @@ class IngaveOverzichtComponent extends React.Component{
                     <td>{calories}</td>
                 </tr>
                 </tbody>
-            </table>
-            <button>
-               ok
-            </button>
+            </Table>
+
         </div>
     }
 }
