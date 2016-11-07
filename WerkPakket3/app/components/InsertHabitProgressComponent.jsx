@@ -3,6 +3,8 @@ import Request  from 'superagent';
 import _    from 'lodash';
 import ReactBootstrap from 'react-bootstrap';
 
+var FormGroup = ReactBootstrap.FormGroup;
+
 class InsertHabitProgressComponent extends React.Component{
     constructor(){
         super();
