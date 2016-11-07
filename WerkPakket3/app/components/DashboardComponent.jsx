@@ -1,86 +1,55 @@
 import React from 'react';
 import { render } from 'react-dom';
-//import GetDashboard from '../api/DashboardApi';
-var Dashboard = require("../api/DashboardApi.js");
-import Store from '../store';
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import Request from 'superagent';
+import _    from 'lodash';
 
-var data = [
-    fetch(`http://192.168.88.1:8008/api/klant/1/dashboard`)
-]
-
-var DashboardComponent =  React.createClass (
-    {
-        render: function () {
-
-            return (
-                <div>
-                    <h1>{this.props.naam}</h1>
-                </div>
-            );
-        }
+class DashboardComponent extends React.Component{
+    constructor(){
+        super();
+        this.state = {};
     }
-);
-
-var Post = React.createClass(
-    {
-        render: function () {
-            return (
-                <div>
-                    <h1>Dashboard</h1>
-                    <DashboardList data={this.props.data}/>
-                </div>
+    componentWillMount(){
+        var url = "http://localhost:8081/api/klant/1/dashboard";
+        Request.get(url).then((response)=>
+        {
+            this.setState(
+                {
+                    naam : response.body.naam,
+                    habit1: response.body.Habit1,
+                    habit2: response.body.Habit2,
+                    habit3: response.body.Habit3,
+                    weight: response.body.Weight,
+                    calories: response.body.Calories
+                }
             );
-        }
-    });
-
-
-    var DashboardList = React.createClass(
-        {
-        render: function() {
-    var dashboardNodes = this.props.data.map(function (p) {
-        return (
-            <DashboardComponent naam={p.naam}></DashboardComponent>
-        );
-    });
-    return (
-        <div key={data.toString()}>
-            {dashboardNodes}
-        </div>
-    );
-}
-    });
-
-
-
-var KlantData = React.createClass(
-    {
-    getInitialState: function()
-    {
-    return {date: []};
-},
-componentDidMount: function(){
-    $.ajax(
-        {
-            url: this.props.url,
-            type: "POST",
-            dataType: 'json',
-            cacha:false,
-            success: function(data){
-                this.setState({data: data});
-            }.bind(this),
-            error: function(xhr, status, err){
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
         });
-},
-render: function(){
-    return(
-        <div>
-            <Post data={this.state.date}/>
+    }
+
+    render(){
+        var naam =  this.state.naam;
+        var habit1 = this.state.habit1;
+        var habit2 = this.state.habit2;
+        var habit3 = this.state.habit3;
+        var weight = this.state.weight;
+        var calories = this.state.calories;
+
+        var klantInfo = _.map(this.state.klantInfo,(infoItem)=>
+            {
+                return <li>{infoItem.naam}</li>;
+            });
+
+
+        return  <div>
+            <h2>Klant {naam}</h2>
+            <ul>
+                <li>{naam}</li>
+                <li>{habit1}</li>
+                <li>{habit2}</li>
+                <li>{habit3}</li>
+                <li>{weight}</li>
+                <li>{calories}</li>
+            </ul>
         </div>
-    );
-}}
-);
-render(<Post data={data}/>, document.getElementById('container'));
+    }
+}
+export {DashboardComponent as default};
