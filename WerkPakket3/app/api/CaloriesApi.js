@@ -28,7 +28,7 @@ REST_ROUTERCALORIES.prototype.handleRoutes= function(router,connection) {
     });
 
     router.get("/klant/:klant_id/caloriesoverzicht",function(req,res){
-        var query = "SELECT date , calories  FROM ?? WHERE ??=? AND  DATE_ADD(NOW(), INTERVAL -30 DAY)";
+        var query = "SELECT * FROM ?? WHERE ??=?";
         var table = ["progressreport","klant_id",req.params.klant_id];
         query = mysql.format(query,table);
         connection.query(query,function(err,rows){
@@ -37,8 +37,7 @@ REST_ROUTERCALORIES.prototype.handleRoutes= function(router,connection) {
             } else {
                 for(var i in rows)
                 {
-                    res.json({"Error" : false, "Message" : "Success", rows})
-                   // res.json({"Error" : false, "Message" : "Success", "date" : rows[i].date, "calories": rows[i].calories});
+                    res.json({"Error" : false, "Message" : "Success", "date" : rows[i].date, "calories": rows[i].calories});
                     return ;
                 }
 

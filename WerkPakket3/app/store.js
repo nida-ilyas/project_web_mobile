@@ -10,9 +10,9 @@ const  reducer = (state, action) => {
         case 'weight_inserted':
             return Object.assign({}, state, {weight: action.data});
         case 'calories_inserted':
-            return Object.assign({}, state, {calories: action.data});
+            return Object.assign({}, state, {weight: action.data});
         case 'load_habit3':
-            return Object.assign({}, state, {habits: action.data});
+            return Object.assign({}, state, {weight: action.data});
         case 'load_perhabit':
             return Object.assign({}, state, {weight: action.data});
         default:
