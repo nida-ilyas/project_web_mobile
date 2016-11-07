@@ -23,6 +23,10 @@ import { render } from 'react-dom';
 
 
 /* === InsertHabitProgressComponent === */
-
+/*
     render(<InsertHabitProgressComponent/>, document.getElementById('container'));
     import InsertHabitProgressComponent from './app/components/InsertHabitProgressComponent.jsx';
+*/
+
+import IngaveOverzicht from './app/components/IngaveOverzichtComponent.jsx';
+render(<IngaveOverzicht />, document.getElementById('container'));

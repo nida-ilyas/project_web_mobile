@@ -103,6 +103,47 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
         });
     });
 
+
+
+
+
+
+
+
+    router.get("/klant/:klant_id/progresshabits",function(req,res){ //
+
+        //var query = 'SELECT * FROM progressreport WHERE klant_id= \''+ req.params.klant_id + '\'';
+
+        var query = 'SELECT  k.habit_1 , k.habit_2 , k.habit_3 , p.date, p.progressHabit1, p.progressHabit2, p.progressHabit3, p.weight, p.calories FROM progressreport p INNER JOIN klanten k   ON (p.klant_id = k.id)  WHERE p.klant_id= \''+ req.params.klant_id + '\'' ;
+
+
+        query = mysql.format(query);// ,table
+        connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+            } else {
+                for(var i in rows)
+                {
+                    res.json({"Error": false, "Message": "Success",
+                        "Date" : rows[i].date,
+                        "Habit1" : rows[i].habit_1, "ProgressHabit1": rows[i].progressHabit1,
+                        "Habit2" : rows[i].habit_2, "ProgressHabit2": rows[i].progressHabit2,
+                        "Habit3" : rows[i].habit_3, "ProgressHabit3": rows[i].progressHabit3,
+                        "Weight": rows[i].weight,
+                        "Calories": rows[i].calories
+                    });
+                    return ;
+                }
+            }
+        });
+    });
+
+
+
+
+
+
+
     router.put("klant/:klant_id/progressIngeven", function (req,res) {
         var query = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
         var table = ["progressreport","progressHabit1",req.body.progressHabit1,
@@ -117,6 +158,7 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
             }
         });
     });
+
 
 
 }
