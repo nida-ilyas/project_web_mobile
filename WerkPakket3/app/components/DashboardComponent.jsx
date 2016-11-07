@@ -1,7 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
 import Request from 'superagent';
 import _    from 'lodash';
 
