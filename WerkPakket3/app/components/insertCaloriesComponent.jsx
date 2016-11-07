@@ -30,6 +30,12 @@ class InsertCaloriesComponent extends React.Component {
         return (
             <div>
 
+                <form id="insert-weight-form" onSubmit={this.insertWeight}>
+                    <input type="date" width="300px" name="insert-weight-form-date" required />
+                    <input type="number" width="300px" name="insert-weight-form-weight" required />
+                    <input type="submit" />
+                    {this.state.message}
+                </form>
 
 
                 <ul>
