@@ -21,13 +21,26 @@ REST_ROUTERWEIGHT.prototype.handleRoutes= function(router,connection) {
                 throw err;
                 res.json({"Error" : true, "Message" : "Error executing MySQL query"});
             } else {
-                res.json({"Error" : false, "Message" : "updated weight "+req.body.weight});
+                res.json({"Error" : false, "Message" : "updated weight "});
+            }
+        });
+    });
+
+    router.post("/klant/:klant_id/postweight",function(req,res){
+        var query = 'INSERT INTO progressreport(weight,date) VALUES(weight=\''+ req.body.weight + '\',date=\''+ req.body.date + '\') FROM klant WHERE id=\''+ req.params.klant_id + '\'';
+       // var table = ["progressreport","weight","date","klant_id",req.params.klant_id];
+        query = mysql.format(query); //,table
+        connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+            } else {
+                res.json({"Error" : false, "Message" : "Weight added !"});
             }
         });
     });
 
     router.get("/klant/:klant_id/weightoverzicht",function(req,res){
-        var query = "SELECT * FROM ?? WHERE ??=? AND  DATE_ADD(NOW(), INTERVAL -30 DAY)" ;
+        var query = "SELECT date , weight  FROM ?? WHERE ??=? AND  DATE_ADD(NOW(), INTERVAL -30 DAY)" ;
         var table = ["progressreport","klant_id",req.params.klant_id];
         query = mysql.format(query,table);
         connection.query(query,function(err,rows){
@@ -36,7 +49,8 @@ REST_ROUTERWEIGHT.prototype.handleRoutes= function(router,connection) {
             } else {
                 for(var i in rows)
                 {
-                    res.json({"Error" : false, "Message" : "Success", "date" : rows[i].date, "weight": rows[i].weight});
+                    res.json({"Error" : false, "Message" : "Success", rows});
+                    //res.json({"Error" : false, "Message" : "Success", "date" : rows[i].date, "weight": rows[i].weight});
                     return ;
                 }
 

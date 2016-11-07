@@ -11,7 +11,8 @@ renderApplication();
 
 const applicationBootstrapper = ()=> {
     window.onload = () =>{
-        GetDashboard(1).then()(data=>{
+        var url = "http://localhost:8081/api/klant/1/dashboard";
+        Request.get(url).then()(data=>{
             Store.dispatch({
                 type:'load_dashboard', data
             });
