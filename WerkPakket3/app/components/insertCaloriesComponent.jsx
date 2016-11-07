@@ -1,13 +1,14 @@
 import React from 'react';
 import Request  from 'superagent';
 import _    from 'lodash';
-import InsertWeightEntry from '../api/WeightApi';
+import InsertCaloriesEntry from '../api/CaloriesApi';
 
 class InsertCaloriesComponent extends React.Component {
 
     constructor() {
         super();
         this.state = {}
+
 
     }
     componentWillMount()
@@ -18,34 +19,66 @@ class InsertCaloriesComponent extends React.Component {
         {
             this.setState( // that wil cause the render method to cause again
                 {
-                    date: response.body.date,
-                    weight: response.body.calories  });
+                    m: response,
+                    /* date: response.body.date,*/
+                    calories: response.body.rows
+                    /* calories: response.body.calories */ });
+        });
+
+
+
+    }
+    insertWeight(ev) {
+        ev.preventDefault();
+        const date = ev.target['insert-calories-form-date'].value;
+        const calories = Number(ev.target['insert-calories-form-calories'].value);
+        var url = "http://localhost:8081/api/klant/1/postcalories?calories="+calories+ '&date='+date;
+        Request.post(url).then((response )=>
+        {
+            this.setState(
+                {
+                    m : response,
+                    message: 'Calories zijn geupdated',
+                    date: date,
+                    calories: calories
+
+                } );
         });
 
     }
+
+
     render() {
-        var date = this.state.date;
-        var calories = this.state.calories;
+        /*  var date = this.state.date;*/
+        /* var calories = this.state.calories;*/
+        var message = this.state.message;
+
+
 
         return (
             <div>
 
-                <form id="insert-weight-form" onSubmit={this.insertWeight}>
-                    <input type="date" width="300px" name="insert-weight-form-date" required />
-                    <input type="number" width="300px" name="insert-weight-form-weight" required />
-                    <input type="submit" />
-                    {this.state.message}
+
+                <form id="insert-calories-form" onSubmit={this.insertWeight.bind(this)}>
+                    <h3> Update Calories </h3>
+                    <input type="date" width="300px"  name="insert-calories-form-date" required  />
+                    <input type="number" width="300px"  name="insert-calories-form-calories" required />
+                    <input type="submit"  />
+                    {message}
+
+
+
                 </form>
 
 
-                <ul>
 
-                    <li> <h2> Date:</h2>   {date} </li>
-                    <li> <h2>Calories </h2>{calories}</li>
-                </ul>
+
 
             </div>
         )
     }
 }
 export  {InsertCaloriesComponent as default};
+
+
+

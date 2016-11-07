@@ -27,6 +27,19 @@ REST_ROUTERCALORIES.prototype.handleRoutes= function(router,connection) {
         });
     });
 
+    router.post("/klant/:klant_id/postcalories",function(req,res){
+        var query = 'INSERT INTO progressreport(??,??,klant_id) VALUES (?,?,(SELECT id FROM klanten WHERE id=\''+ req.params.klant_id + '\'))';
+        var table = ["calories", "date", req.body.calories,req.body.date];
+        query = mysql.format(query,table);
+        connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+            } else {
+                res.json({"Error" : false, "Message" : "calories posted !"});
+            }
+        });
+    });
+
     router.get("/klant/:klant_id/caloriesoverzicht",function(req,res){
         var query = "SELECT * FROM ?? WHERE ??=?";
         var table = ["progressreport","klant_id",req.params.klant_id];
