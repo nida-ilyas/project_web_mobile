@@ -21,7 +21,7 @@ class DashboardComponent extends React.Component{
                     habit3: response.body.Habit3,
                     weight: response.body.Weight,
                     calories: response.body.Calories,
-                    dashboard:'loading'
+                    dashboard: 'loading'// 'loading'
                 } );
             Store.dispatch({ type: 'load_dashboard', data: response })
         });
@@ -40,9 +40,9 @@ class DashboardComponent extends React.Component{
         var calories = this.state.calories;
 
         var klantInfo = _.map(this.state.klantInfo,(infoItem)=>
-            {
-                return <li>{infoItem.naam}</li>;
-            });
+        {
+            return <li>{infoItem.naam}</li>;
+        });
 
 
         return  <div>

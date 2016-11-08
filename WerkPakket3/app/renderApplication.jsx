@@ -12,21 +12,26 @@ import InsertCaloriesComponent from './components/insertCaloriesComponent'
 import InsertWeightComponent from './components/insertWeightComponent';
 import InsertHabitProgress from './components/InsertHabitProgressComponent';
 
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 class App extends React.Component{
     render(){
         return(
             <div>
                 <DashboardComponent/>
+
                 <Habit3Component/>
                 <IngaveOverzichtComponent/>
                 <InsertCaloriesComponent/>
                 <InsertWeightComponent/>
-                <InsertHabitProgress/>
+					<InsertHabitProgress/>
+
             </div>
         )
     }
 }
+
+
 const renderApplication = ()=>{
     render (<MuiThemeProvider>
             <App/>
@@ -34,4 +39,7 @@ const renderApplication = ()=>{
         document.getElementById('applicatie')
     );
 }
+
+
+
 export default renderApplication;

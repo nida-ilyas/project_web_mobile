@@ -7,8 +7,10 @@ import InsertHabit from './api/PerHabitApi';
 import Request from 'superagent';
 
 import renderApplication from './renderApplication';
+import routes from './routes';
 
-renderApplication();
+//renderApplication();
+routes(); 
 
 const applicationBootstrapper = () => {
     window.onload = () => {
