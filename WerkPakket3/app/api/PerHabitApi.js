@@ -148,6 +148,7 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
 
         var query = 'INSERT INTO progressreport(??,??,klant_id) VALUES (?,?,(SELECT id FROM klanten WHERE id=\''+ req.params.klant_id + '\'))';
         var table = ["progressHabit1", "progressHabit2", "progressHabit3", "date",
+            req.body.progressHabit1, req.body.progressHabit2, req.body.progressHabit3, req.body.date];
 
         /*
         var table = ["progressreport","progressHabit1",req.body.progressHabit1,
