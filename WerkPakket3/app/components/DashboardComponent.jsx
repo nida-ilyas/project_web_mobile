@@ -47,14 +47,16 @@ class DashboardComponent extends React.Component{
 
         return  <div>
             <h2>Dashboard voor {naam}</h2>
-            <ul>
-                <li>{naam}</li>
-                <li>{habit1}</li>
-                <li>{habit2}</li>
-                <li>{habit3}</li>
-                <li>{weight}</li>
-                <li>{calories}</li>
-            </ul>
+
+                <h3>{naam}</h3>
+                <h4>Habits: </h4>
+                <p>{habit1}</p>
+                <p>{habit2}</p>
+                <p>{habit3}</p>
+
+                <p><b>Weight: </b>{weight}</p>
+                <p><b>Calories: </b>{calories}</p>
+
         </div>
     }
 }
