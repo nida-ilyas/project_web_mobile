@@ -43,8 +43,15 @@ class IngaveOverzichtComponent extends React.Component{
             var date = habit.date;
             var d = date.substring(0, date.indexOf('T'));
 
-            return
-
+            return<tbody>
+            <tr>
+                    <th>Date</th>
+                    <th>{habit.habit_1}</th>
+                    <th>{habit.habit_2}</th>
+                    <th>{habit.habit_3}</th>
+                    <th>Weight</th>
+                    <th>Calories</th>
+                </tr>
             <tr>
                 <td>{d}</td>
                 <td>{habit.progressHabit1}</td>
@@ -53,6 +60,7 @@ class IngaveOverzichtComponent extends React.Component{
                 <td>{habit.weight}</td>
                 <td>{habit.calories}</td>
             </tr>
+            </tbody>
 
         });
 
