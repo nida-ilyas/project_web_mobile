@@ -1,4 +1,5 @@
 import React from 'react';
+import { render } from 'react-dom';
 import {Router, Route, hashHistory, IndexRoute } from 'react-router';
 import DashboardComponent from './components/DashboardComponent';
 import Habit3Component from './components/Habit3Component';
@@ -6,7 +7,8 @@ import IngaveOverzichtComponent from './components/IngaveOverzichtComponent';
 import InsertCaloriesComponent from './components/insertCaloriesComponent'
 import InsertWeightComponent from './components/insertWeightComponent';
 import InsertHabitProgressComponent from  './components/InsertHabitProgressComponent'
-ReactDOM.render((
+
+render((
 
     <Router  history={hashHistory}>
         <Route path="/" component={DashboardComponent} />
