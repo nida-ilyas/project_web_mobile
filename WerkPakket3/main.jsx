@@ -1,11 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
+import Dashboard from './app/components/DashboardComponent.jsx';
 
 /* === DASHBOARD === */
 /*
+
+
     import Dashboard from './app/components/DashboardComponent.jsx';
     render(<Dashboard />, document.getElementById('container'));
-*/
 
 
 /* === Overzicht_3Habits === */
@@ -21,17 +23,21 @@ import { render } from 'react-dom';
  render(<InsertWeight />, document.getElementById('container'));
 */
 
- import InsertCalories from './app/components/InsertCaloriesComponent.jsx';
- render(<InsertCalories />, document.getElementById('container'));
+//import InsertCalories from './app/components/InsertCaloriesComponent.jsx';
+//render(<InsertCalories />, document.getElementById('container'));
 
 
 
 /* === InsertHabitProgressComponent === */
-/*
+
     render(<InsertHabitProgressComponent/>, document.getElementById('container'));
     import InsertHabitProgressComponent from './app/components/InsertHabitProgressComponent.jsx';
-*/
+
 /*
 import IngaveOverzicht from './app/components/IngaveOverzichtComponent.jsx';
 render(<IngaveOverzicht />, document.getElementById('container'));
     */
+
+function openDashboard() {
+ render(<Dashboard />, document.getElementById('container'));
+}
