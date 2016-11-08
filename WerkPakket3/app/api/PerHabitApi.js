@@ -145,16 +145,22 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
 
 
     router.put("klant/:klant_id/progressIngeven", function (req,res) {
-        var query = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
+
+        var query = 'INSERT INTO progressreport(??,??,klant_id) VALUES (?,?,(SELECT id FROM klanten WHERE id=\''+ req.params.klant_id + '\'))';
+        var table = ["progressHabit1", "progressHabit2", "progressHabit3", "date",
+
+        /*
         var table = ["progressreport","progressHabit1",req.body.progressHabit1,
             "klant_id", "date",Date.now() ,req.params.klant_id];
+        */
+
         query = mysql.format(query,table);
         connection.query(query, function (err,rows) {
             if(err) {
                 throw err;
                 res.json({"Error" : true, "Message" : "Error executing MySQL query"});
             } else {
-                res.json({"Error" : false, "Message" : "updated weight "+req.body.weight});
+                res.json({"Error" : false, "Message" : "habits progress updated."});
             }
         });
     });

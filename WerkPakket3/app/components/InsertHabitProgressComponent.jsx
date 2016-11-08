@@ -29,7 +29,6 @@ class InsertHabitProgressComponent extends React.Component{
         {
             this.setState( // that wil cause the render method to cause again
                 {
-
                     habit1: response.body.Habit1,
                     habit2: response.body.Habit2,
                     habit3: response.body.Habit3
@@ -38,10 +37,7 @@ class InsertHabitProgressComponent extends React.Component{
 
     }
 
-    handleClick() {
-        //alert("I am an alert box!");
-        alert(reportHabit1+reportHabit2+reportHabit3);
-    }
+
 
 
     handleChange1(event){
@@ -57,7 +53,26 @@ class InsertHabitProgressComponent extends React.Component{
         return reportHabit3;
     }
 
-
+    handleClick() {
+        //alert("I am an alert box!");
+        var date = Date.now();
+        var url = "http://localhost:8081/api/klant/1/progressIngeven?progressHabit1="+reportHabit1+"&progressHabit2"+reportHabit2+"&progressHabit3"+reportHabit3+"date"+date;
+        Request.post(url).then((response )=>
+            {
+                this.setState(
+                    {
+                    m: response,
+                    message: 'habits progress saved!',
+                    progressHabit1: reportHabit1,
+                    progressHabit2: reportHabit2,
+                    progressHabit3: reportHabit3,
+                    date: date
+                    }
+                );
+            }
+        )
+        alert("Habit progress saved!");
+    }
 
     render()
     {
@@ -86,24 +101,24 @@ class InsertHabitProgressComponent extends React.Component{
 
             <label>{habit1}</label>
             <select onChange={this.handleChange1.bind(this)}>
-                <option value="habit1NotDone">Niet uitgevoerd</option>
-                <option value="habit1Done">Uitgevoerd</option>
+                <option value="0">Niet uitgevoerd</option>
+                <option value="1">Uitgevoerd</option>
             </select>
-
+            <br/>
 
             <label>{habit2}</label>
             <select onChange={this.handleChange2.bind(this)}>
-                <option value="habit2NotDone">Niet uitgevoerd</option>
-                <option value="habit2Done">Uitgevoerd</option>
+                <option value="0">Niet uitgevoerd</option>
+                <option value="1">Uitgevoerd</option>
             </select>
 
-
+            <br/>
             <label>{habit3}</label>
             <select onChange={this.handleChange3.bind(this)}>
-                <option value="habit3NotDone">Niet uitgevoerd</option>
-                <option value="habit3Done">Uitgevoerd</option>
+                <option value="0">Niet uitgevoerd</option>
+                <option value="1">Uitgevoerd</option>
             </select>
-
+            <br/>
             <Button onClick={this.handleClick} bsStyle="primary" >Submit</Button>
 
         </div>
