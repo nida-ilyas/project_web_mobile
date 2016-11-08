@@ -46,7 +46,7 @@ class DashboardComponent extends React.Component{
 
 
         return  <div>
-            <h2>Klant {naam}</h2>
+            <h2>Dashboard voor {naam}</h2>
             <ul>
                 <li>{naam}</li>
                 <li>{habit1}</li>

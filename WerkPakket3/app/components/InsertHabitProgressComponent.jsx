@@ -11,6 +11,8 @@ import Button from 'react-bootstrap/lib/Button';
 // or
 import { Button } from 'react-bootstrap';
 */
+var reportHabit1;
+var reportHabit2;
 var reportHabit3;
 
 class InsertHabitProgressComponent extends React.Component{
@@ -43,11 +45,19 @@ class InsertHabitProgressComponent extends React.Component{
 
     handleClick() {
         //alert("I am an alert box!");
-        alert(reportHabit3);
+        alert(reportHabit1+reportHabit2+reportHabit3);
     }
 
 
-    handleChange(event){
+    handleChange1(event){
+        reportHabit1 = (event.target.value);
+        return reportHabit1;
+    }
+    handleChange2(event){
+        reportHabit2 = (event.target.value);
+        return reportHabit2;
+    }
+    handleChange3(event){
         reportHabit3 = (event.target.value);
         return reportHabit3;
     }
@@ -76,15 +86,25 @@ class InsertHabitProgressComponent extends React.Component{
         return  <div>
 
             <h2>Invoer: {d}</h2>
-            <ul>
-                <li>{habit1}</li>
-                <li>{habit2}</li>
-                <li>{habit3}</li>
-            </ul>
+
+
+
+            <label>{habit1}</label>
+            <select onChange={this.handleChange1.bind(this)}>
+                <option value="habit1NotDone">Niet uitgevoerd</option>
+                <option value="habit1Done">Uitgevoerd</option>
+            </select>
+
+
+            <label>{habit2}</label>
+            <select onChange={this.handleChange2.bind(this)}>
+                <option value="habit2NotDone">Niet uitgevoerd</option>
+                <option value="habit2Done">Uitgevoerd</option>
+            </select>
 
 
             <label>{habit3}</label>
-            <select onChange={this.handleChange.bind(this)}>
+            <select onChange={this.handleChange3.bind(this)}>
                 <option value="habit3NotDone">Niet uitgevoerd</option>
                 <option value="habit3Done">Uitgevoerd</option>
             </select>
