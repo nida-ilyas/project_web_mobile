@@ -45,8 +45,7 @@ class IngaveOverzichtComponent extends React.Component{
         var weight = this.state.weight;
         var calories = this.state.calories;
 
-        var klantInfo = _.map(this.state.klantInfo,(infoItem)=>
-        {
+        var klantInfo = _.map(this.state.klantInfo,(infoItem)=> {
             return <li>{infoItem.date}</li>;
         });
 
@@ -58,9 +57,9 @@ class IngaveOverzichtComponent extends React.Component{
                 <thead>
                 <tr>
                     <th>Date</th>
-                    <th>{habit1}</th>
-                    <th>{habit2}</th>
-                    <th>{habit3}</th>
+                    <th>infoItem.habit_1</th>
+                    <th>infoItem.habit_2</th>
+                    <th>infoItem.habit_3</th>
                     <th>Weight</th>
                     <th>Calories</th>
                 </tr>
@@ -78,6 +77,7 @@ class IngaveOverzichtComponent extends React.Component{
             </Table>
 
         </div>
+
     }
 }
 export {IngaveOverzichtComponent as default};

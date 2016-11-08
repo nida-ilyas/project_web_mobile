@@ -23,8 +23,6 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
             } else {
                 for(var i in rows)
                 {
-
-
                     res.json({"Error": false, "Message": "Success", "Habit1": rows[i].habit_1, "ProgressHabit1 Status": rows[i].progressHabit1});
 
                     return ;
@@ -122,6 +120,8 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
             if(err) {
                 res.json({"Error" : true, "Message" : "Error executing MySQL query"});
             } else {
+                res.json({"Error": false, "Message": "Success",rows});
+                /*
                 for(var i in rows)
                 {
                     res.json({"Error": false, "Message": "Success",
@@ -134,6 +134,7 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
                     });
                     return ;
                 }
+                */
             }
         });
     });
