@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var path = require("path");
 module.exports = {
    /* entry: './app/components/Habit3Component.jsx'*/
-    entry: './main.jsx'
+    entry: './entry'
     ,
 
     output: {

@@ -1,5 +1,6 @@
 import React from 'react';
 import Request  from 'superagent';
+import Store from '../store';
 import _    from 'lodash';
 import InsertWeightEntry from '../api/WeightApi';
 
@@ -22,10 +23,13 @@ class InsertWeightComponent extends React.Component {
 
                     /*  date: response.body.date,*/
                     /* weight: response.body.weight  ;*/
-                    weight: response.body.rows})
+                    weight: response.body.rows});
+            Store.dispatch({ type: 'weight_inserted', data: response })
         });
 
-
+        Store.subscribe(() => {
+            this.setState({ weight: JSON.stringify(Store.getState().weight) });
+        });
 
     }
     insertWeight(ev) {

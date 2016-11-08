@@ -12,7 +12,7 @@ import InsertCaloriesComponent from './components/insertCaloriesComponent'
 import InsertWeightComponent from './components/insertWeightComponent';
 import OverzichtPerHabitComponent from './components/overzichtPerHabitComponent';
 
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 class App extends React.Component{
     render(){
         return(
@@ -27,7 +27,7 @@ class App extends React.Component{
         )
     }
 }
-const renderApplication = ()->{
+const renderApplication = ()=>{
     render (<MuiThemeProvider>
             <App/>
         </MuiThemeProvider>,

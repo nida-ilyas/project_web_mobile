@@ -21,12 +21,17 @@ import { render } from 'react-dom';
  render(<InsertWeight />, document.getElementById('container'));
 */
 
+ import InsertCalories from './app/components/InsertCaloriesComponent.jsx';
+ render(<InsertCalories />, document.getElementById('container'));
+
+
 
 /* === InsertHabitProgressComponent === */
 /*
     render(<InsertHabitProgressComponent/>, document.getElementById('container'));
     import InsertHabitProgressComponent from './app/components/InsertHabitProgressComponent.jsx';
 */
-
+/*
 import IngaveOverzicht from './app/components/IngaveOverzichtComponent.jsx';
 render(<IngaveOverzicht />, document.getElementById('container'));
+    */

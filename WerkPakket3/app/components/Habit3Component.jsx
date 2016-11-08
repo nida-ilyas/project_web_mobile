@@ -1,6 +1,7 @@
 import React from 'react';
 import Request  from 'superagent';
 import _    from 'lodash';
+import Store from '../store';
 
 class Habit3Component extends React.Component
 {
@@ -21,12 +22,16 @@ class Habit3Component extends React.Component
              {
                  habit1: response.body.Habit1,
                  habit2: response.body.Habit2,
-                 habit3: response.body.Habit3
-
+                 habit3: response.body.Habit3,
+                 habits : 'loading'
 
 
 
              });
+            Store.dispatch({ type: 'load_habit3', data: response })
+        });
+        Store.subscribe(() => {
+            this.setState({ habits: JSON.stringify(Store.getState().habits) });
         });
 
     }

@@ -5,6 +5,7 @@ import FormGroup from 'react-bootstrap/lib/FormGroup';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
+import Store from '../store';
 /*
 import Button from 'react-bootstrap/lib/Button';
 // or
@@ -30,10 +31,14 @@ class InsertHabitProgressComponent extends React.Component{
 
                     habit1: response.body.Habit1,
                     habit2: response.body.Habit2,
-                    habit3: response.body.Habit3
+                    habit3: response.body.Habit3,
+                    progress: 'loading'
                 });
+            Store.dispatch({ type: 'load_perhabit', data: response });
         });
-
+        Store.subscribe(() => {
+            this.setState({ progress: JSON.stringify(Store.getState().progress) });
+        });
     }
 
     handleClick() {

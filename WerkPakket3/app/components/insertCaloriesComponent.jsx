@@ -1,5 +1,6 @@
 import React from 'react';
 import Request  from 'superagent';
+import Store from '../store';
 import _    from 'lodash';
 import InsertCaloriesEntry from '../api/CaloriesApi';
 
@@ -23,6 +24,10 @@ class InsertCaloriesComponent extends React.Component {
                     /* date: response.body.date,*/
                     calories: response.body.rows
                     /* calories: response.body.calories */ });
+            Store.dispatch({ type: 'calories_inserted', data: response })
+        });
+        Store.subscribe(() => {
+            this.setState({ calories: JSON.stringify(Store.getState().calories) });
         });
 
 

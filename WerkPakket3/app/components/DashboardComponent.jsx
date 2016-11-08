@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import Request from 'superagent';
 import _    from 'lodash';
+import Store from '../store';
 
 class DashboardComponent extends React.Component{
     constructor(){
@@ -19,10 +20,15 @@ class DashboardComponent extends React.Component{
                     habit2: response.body.Habit2,
                     habit3: response.body.Habit3,
                     weight: response.body.Weight,
-                    calories: response.body.Calories
-                }
-            );
+                    calories: response.body.Calories,
+                    dashboard:'loading'
+                } );
+            Store.dispatch({ type: 'load_dashboard', data: response })
         });
+        Store.subscribe(() => {
+            this.setState({ dashboard: JSON.stringify(Store.getState().dashboard) });
+        });
+
     }
 
     render(){

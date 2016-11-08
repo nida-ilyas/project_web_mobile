@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import Request from 'superagent';
 import _    from 'lodash';
 import Table from 'react-bootstrap/lib/Table';
+import Store from '../store';
 
 class IngaveOverzichtComponent extends React.Component{
     constructor(){
@@ -23,9 +24,14 @@ class IngaveOverzichtComponent extends React.Component{
                     progressHabit2: response.body.ProgressHabit2,
                     progressHabit3: response.body.ProgressHabit3,
                     weight: response.body.Weight,
-                    calories: response.body.Calories
+                    calories: response.body.Calories,
+                    overzicht:'overzicht'
                 }
             );
+            Store.dispatch({ type: 'load_dashboard', data: response });
+        });
+        Store.subscribe(() => {
+            this.setState({ overzicht: JSON.stringify(Store.getState().overzicht) });
         });
     }
     render(){
