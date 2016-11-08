@@ -11,17 +11,17 @@ import routes from './routes';
 
 //renderApplication();
 routes(); 
-
+/*
 const applicationBootstrapper = () => {
     window.onload = () => {
         document.getElementById('load-button').onclick = (ev) => {
             var url = "http://localhost:8081/api/klant/1/dashboard";
             Request.get(url).then((data)=>
-             {
+            {
                 Store.dispatch({ type: 'load_dashboard', data });
             });
         }
     }
 }
-
+*/
 export default applicationBootstrapper;

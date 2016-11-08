@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import Request from 'superagent';
 import _    from 'lodash';
-import Table from 'react-bootstrap/lib/Table';
+import BootstrapTable  from 'react-bootstrap/lib/Table';
 import Store from '../store';
 
 class IngaveOverzichtComponent extends React.Component{
@@ -16,16 +16,7 @@ class IngaveOverzichtComponent extends React.Component{
         {
             this.setState(
                 {
-                    date : response.body.Date,
-                    habit1: response.body.Habit1,
-                    habit2: response.body.Habit2,
-                    habit3: response.body.Habit3,
-                    progressHabit1: response.body.ProgressHabit1,
-                    progressHabit2: response.body.ProgressHabit2,
-                    progressHabit3: response.body.ProgressHabit3,
-                    weight: response.body.Weight,
-                    calories: response.body.Calories,
-                    overzicht:'overzicht'
+                    habits: response.body.rows
                 }
             );
             Store.dispatch({ type: 'load_dashboard', data: response });
@@ -35,6 +26,8 @@ class IngaveOverzichtComponent extends React.Component{
         });
     }
     render(){
+        var habits = this.state.habits;
+        /*
         var date = this.state.date;
         var habit1 = this.state.habit1;
         var habit2 = this.state.habit2;
@@ -44,38 +37,32 @@ class IngaveOverzichtComponent extends React.Component{
         var progressHabit3 = this.state.progressHabit3;
         var weight = this.state.weight;
         var calories = this.state.calories;
+*/
+        var klantInfo = _.map(this.state.habits,(habit)=> {
 
-        var klantInfo = _.map(this.state.klantInfo,(infoItem)=> {
-            return <li>{infoItem.date}</li>;
+            var date = habit.date;
+            var d = date.substring(0, date.indexOf('T'));
+
+            return
+
+            <tr>
+                <td>{d}</td>
+                <td>{habit.progressHabit1}</td>
+                <td>{habit.progressHabit2}</td>
+                <td>{habit.progressHabit3}</td>
+                <td>{habit.weight}</td>
+                <td>{habit.calories}</td>
+            </tr>
+
         });
+
 
 
         return  <div>
             <h2>Progress Report</h2>
-
-            <Table>
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>infoItem.habit_1</th>
-                    <th>infoItem.habit_2</th>
-                    <th>infoItem.habit_3</th>
-                    <th>Weight</th>
-                    <th>Calories</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>{date}</td>
-                    <td>{progressHabit1}</td>
-                    <td>{progressHabit2}</td>
-                    <td>{progressHabit3}</td>
-                    <td>{weight}</td>
-                    <td>{calories}</td>
-                </tr>
-                </tbody>
-            </Table>
-
+            <BootstrapTable>
+            {klantInfo}
+            </BootstrapTable>
         </div>
 
     }
