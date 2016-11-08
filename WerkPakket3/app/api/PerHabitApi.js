@@ -14,7 +14,7 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
 
     router.get("/klant/:klant_id/progresshabit1",function(req,res){ //
 
-      //  var query = 'SELECT progressHabit1 , date  FROM progressreport WHERE klant_id= \''+ req.params.klant_id + '\' AND ';
+        //  var query = 'SELECT progressHabit1 , date  FROM progressreport WHERE klant_id= \''+ req.params.klant_id + '\' AND ';
         var query = 'SELECT  k.habit_1 , k.habit_2 , k.habit_3 ,p.date, p.progressHabit1 FROM klanten k INNER JOIN progressreport p   ON (k.id = p.klant_id)  WHERE p.klant_id= \''+ req.params.klant_id + '\'' ;
         query = mysql.format(query);// ,table
         connection.query(query,function(err,rows){
@@ -25,43 +25,43 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
                 {
 
 
-                        res.json({"Error": false, "Message": "Success", "Habit1": rows[i].habit_1, "ProgressHabit1 Status": rows[i].progressHabit1});
+                    res.json({"Error": false, "Message": "Success", "Habit1": rows[i].habit_1, "ProgressHabit1 Status": rows[i].progressHabit1});
 
-                   return ;
+                    return ;
                 }
 
 
                 /*
-                for(var i in rows)
-                {
-                    if(req.param.p_habit == "progressHabit1")
-                     {
+                 for(var i in rows)
+                 {
+                 if(req.param.p_habit == "progressHabit1")
+                 {
 
-                    res.json({"Error" : false, "Message" : "Success", "Habit1" : rows[i]. progressHabit1});
+                 res.json({"Error" : false, "Message" : "Success", "Habit1" : rows[i]. progressHabit1});
 
-                      }
-                    if(req.param.p_habit == "progressHabit2")
-                    {
+                 }
+                 if(req.param.p_habit == "progressHabit2")
+                 {
 
-                        res.json({"Error" : false, "Message" : "Success", "Habit1" : rows[i]. progressHabit2});
+                 res.json({"Error" : false, "Message" : "Success", "Habit1" : rows[i]. progressHabit2});
 
-                    }
-                    if(req.param.p_habit == "progressHabit3")
-                    {
+                 }
+                 if(req.param.p_habit == "progressHabit3")
+                 {
 
-                        res.json({"Error" : false, "Message" : "Success", "Habit1" : rows[i]. progressHabit3});
+                 res.json({"Error" : false, "Message" : "Success", "Habit1" : rows[i]. progressHabit3});
 
-                    }
+                 }
 
 
-                }
-*/
+                 }
+                 */
             }
         });
     });
     router.get("/klant/:klant_id/progresshabit2",function(req,res){ //
 
-      //  var query = 'SELECT * FROM progressreport WHERE klant_id= \''+ req.params.klant_id + '\'';
+        //  var query = 'SELECT * FROM progressreport WHERE klant_id= \''+ req.params.klant_id + '\'';
         var query = 'SELECT  k.habit_1 , k.habit_2 , k.habit_3 ,p.date, p.progressHabit2 FROM klanten k INNER JOIN progressreport p   ON (k.id = p.klant_id)  WHERE p.klant_id= \''+ req.params.klant_id + '\'' ;
         query = mysql.format(query);// ,table
         connection.query(query,function(err,rows){
@@ -94,7 +94,7 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
 
                     res.json({"Error": false, "Message": "Success","Habit1": rows[i].habit_3,  "ProgressHabit3: ": rows[i].progressHabit3});
 
-                     return ;
+                    return ;
                 }
 
 
@@ -145,16 +145,23 @@ REST_ROUTER_PER_HABIT.prototype.handleRoutes= function(router,connection) {
 
 
     router.put("klant/:klant_id/progressIngeven", function (req,res) {
-        var query = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
-        var table = ["progressreport","progressHabit1",req.body.progressHabit1,
-            "klant_id", "date",Date.now() ,req.params.klant_id];
+
+        var query = 'INSERT INTO progressreport(??,??,klant_id) VALUES (?,?,(SELECT id FROM klanten WHERE id=\''+ req.params.klant_id + '\'))';
+        var table = ["progressHabit1", "progressHabit2", "progressHabit3", "date",
+            req.body.progressHabit1, req.body.progressHabit2, req.body.progressHabit3, req.body.date];
+
+        /*
+         var table = ["progressreport","progressHabit1",req.body.progressHabit1,
+         "klant_id", "date",Date.now() ,req.params.klant_id];
+         */
+
         query = mysql.format(query,table);
         connection.query(query, function (err,rows) {
             if(err) {
                 throw err;
                 res.json({"Error" : true, "Message" : "Error executing MySQL query"});
             } else {
-                res.json({"Error" : false, "Message" : "updated weight "+req.body.weight});
+                res.json({"Error" : false, "Message" : "habits progress updated."});
             }
         });
     });

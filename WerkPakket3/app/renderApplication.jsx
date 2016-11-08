@@ -10,7 +10,8 @@ import Habit3Component from './components/Habit3Component';
 import IngaveOverzichtComponent from './components/IngaveOverzichtComponent';
 import InsertCaloriesComponent from './components/insertCaloriesComponent'
 import InsertWeightComponent from './components/insertWeightComponent';
-//import OverzichtPerHabitComponent from './components/overzichtPerHabitComponent';
+import InsertHabitProgress from './components/InsertHabitProgressComponent';
+
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 class App extends React.Component{
@@ -23,7 +24,7 @@ class App extends React.Component{
                 <IngaveOverzichtComponent/>
                 <InsertCaloriesComponent/>
                 <InsertWeightComponent/>
-
+					<InsertHabitProgress/>
 
             </div>
         )
